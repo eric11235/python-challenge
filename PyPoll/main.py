@@ -6,6 +6,7 @@ import csv
 # Path to collect data from the Resources folder
 dataCSV = os.path.join('Resources', 'election_data.csv')
 
+
 # Clear the screen for enhanced user visiblity
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -40,7 +41,6 @@ candidate_unique_list = list(candidate_unique)
 
 
 # Count the number of votes each candidate received --> number of times each candidate's name appears in the candidate_list
-
 # Loop through the votes one time for each of the candidates and count the number of votes each candidate receives
 for i in range(number_candidates):
     print()
@@ -64,4 +64,21 @@ index_vote_count = vote_count_list.index(winner_vote_count)
 print("Winner:",candidate_unique_list[index_vote_count])
 print()
 print('--------------------------')
+
+
+# Send print statement outputs to a text file
+with open('Output_Print.txt', 'w') as f:
+    print('Election Results', file=f)
+    print('\n', file=f)
+    print('--------------------------', file=f)
+    print("Total Votes: ",totalvotes, file=f)
+    print('--------------------------', file=f)
+    for i in range(number_candidates):
+        print('\n', file=f)
+        print(list(candidate_unique)[i],":",round(candidate_list.count(list(candidate_unique)[i]) / totalvotes * 100, 3),"%","(",candidate_list.count(list(candidate_unique)[i]),")", file=f)
+    print('\n', file=f)
+    print('--------------------------', file=f)
+    print("Winner:",candidate_unique_list[index_vote_count], file=f)
+    print('--------------------------', file=f)
+
 

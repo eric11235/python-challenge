@@ -60,9 +60,20 @@ print("Average Change: $",average)
 # Search the monthly_change_profit_list created above for the Max value and identify the nth month in which this max profit change occurs
 max_profit_increase = max(monthly_change_profit_list)
 month_max_profit_increase = monthly_change_profit_list.index(max_profit_increase)
-print("Greatest Increase in Profits:",date_list[month_max_profit_increase + 1]," $",max_profit_increase)
+print("Greatest Increase in Profits:",date_list[month_max_profit_increase + 1],"($",max_profit_increase,")")
 
 # Search the monthly_change_profit_list created above for the Min value and identify the nth month in which this min profit change occurs
 min_profit_increase = min(monthly_change_profit_list)
 month_min_profit_increase = monthly_change_profit_list.index(min_profit_increase)
-print("Greatest Decrease in Profits:",date_list[month_min_profit_increase + 1]," $",min_profit_increase)
+print("Greatest Decrease in Profits:",date_list[month_min_profit_increase + 1],"($",min_profit_increase,")")
+
+# Output print statements to a text file
+with open('Output_Print.txt', 'w') as f:
+    print('Financial Analysis', file=f)
+    print('--------------------------', file=f)
+    print('\n', file=f)
+    print("Total Months: ",totalmonths, file=f)
+    print("Total: $",totalprofit, file=f)
+    print("Average Change: $",average, file=f)
+    print("Greatest Increase in Profits:",date_list[month_max_profit_increase + 1]," $",max_profit_increase, file=f)
+    print("Greatest Decrease in Profits:",date_list[month_min_profit_increase + 1]," $",min_profit_increase, file=f)
